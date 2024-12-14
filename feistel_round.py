@@ -1,7 +1,6 @@
 from data_manipulation import expansion, permutation
 
-def feistel_round(data, subkey, round):
-    left, right = data[:4], data[4:]
+def feistel_round(left, right, subkey, round):
     f = f_function(right, subkey)
     xor = format(int(left, 2) ^ int(f, 2), f'04b')
 
@@ -28,8 +27,10 @@ def s_box(left, right):
           [3, 0, 1, 0],
           [2, 1, 0, 3]]
 
-    row0, column0 = int(left[0] + left[3], 2), int(left[1] + left[2], 2)
-    row1, column1 = int(right[0] + right[3], 2), int(right[1] + right[2], 2)
+    (row0, column0) = (int(left[0] + left[3], 2), 
+                       int(left[1] + left[2], 2))
+    (row1, column1) = (int(right[0] + right[3], 2), 
+                       int(right[1] + right[2], 2))
 
     s0_value = str(format(s0[row0][column0], f'02b'))
     s1_value = str(format(s1[row1][column1], f'02b'))

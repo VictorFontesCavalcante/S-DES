@@ -1,4 +1,4 @@
-def permutation(obj, type):
+def permutation(obj, perm):
     permutations = {"P4":   [1, 3, 2, 0],
                     "P8":   [5, 2, 6, 3, 7, 4, 9, 8],
                     "P10":  [2, 4, 1, 6, 3, 9, 0, 8, 7, 5],
@@ -8,7 +8,7 @@ def permutation(obj, type):
 
     permutation = str()
 
-    for i in permutations[type]:
+    for i in permutations[perm]:
         permutation += obj[i]
 
     return permutation
